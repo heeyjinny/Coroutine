@@ -2,7 +2,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+<!--  인터넷 권한 선언  -->
+<!--  <manifest> 태그 안에 인터넷 권한 선언하고
+      http의 주소도 사용할 수 있도록 <application>태그 안에
+      android:usesCleartextTraffic="true" 추가  -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
+
+        android:usesCleartextTraffic="true"
+
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
