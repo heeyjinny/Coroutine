@@ -80,5 +80,28 @@ class MainActivity : AppCompatActivity() {
 
         }//btnDownload
 
+        //4
+        //바인딩 처리를 run스코프로 감싸면 반복되는 binding.을 제거할 수 있음
+        binding.run {
+
+            btnDownload.setOnClickListener {
+
+                CoroutineScope(Dispatchers.Main).launch {
+
+                    progress.visibility= View.VISIBLE
+
+                    val url = editUrl.text.toString()
+
+                    val bitmap = withContext(Dispatchers.IO){
+                        loadImage(url)
+                    }
+
+                    imagePreview.setImageBitmap(bitmap)
+                    progress.visibility = View.GONE
+
+                }//코루틴스코프
+            }//btnDownload
+        }//바인딩 run
+
     }//onCreate
 }//MainActivity
